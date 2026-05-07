@@ -1,0 +1,21 @@
+project: multimodal-search
+storage:
+  media_root: ./data/media
+  metadata_db: sqlite:///./data/metadata.db
+vector:
+  backend: local-numpy
+  root: ./data/vectors
+  collections:
+    person: person_clip_image
+    vehicle: vehicle_clip_image
+    object: object_clip_image
+models:
+  text_embedding: multilingual-clip
+  image_embedding: multilingual-clip
+  reranker: cross-modal-reranker
+offline:
+  batch_size: 64
+  workers: 4
+online:
+  topk: 50
+  rerank_topn: 20
